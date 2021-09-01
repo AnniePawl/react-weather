@@ -7,13 +7,17 @@ export default function Form() {
   const apikey = "0853c15130697cb0030dc6c83d7ae9cd";
   const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apikey}&units=imperial`;
 
-  const getStories = () => {
-    axios.get(path).then((res) => {
-      const data = res.data;
-      setData(data);
-      console.log(data);
-    });
-  };
+  async function getStories() {
+    try {
+      await axios.get(path).then((res) => {
+        const data = res.data;
+        setData(data);
+        console.log(data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div>
@@ -37,14 +41,3 @@ export default function Form() {
     </div>
   );
 }
-
-// async function getWeather() {
-//   try {
-//     const res = await fetch(path);
-//     const json = await res.json();
-//     setData(json);
-//     console.log(json);
-//   } catch (err) {
-//     console.log(err.messege);
-//   }
-// }
