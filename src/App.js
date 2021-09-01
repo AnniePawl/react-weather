@@ -1,10 +1,10 @@
-import Form from "./components/Form";
-import Form2 from "./components/Form2";
+import WeatherCard from "./components/WeatherCard";
+import "./App.css";
 
 function App() {
   return (
-    <div>
-      <Form2 />
+    <div className="App">
+      <WeatherCard />
     </div>
   );
 }

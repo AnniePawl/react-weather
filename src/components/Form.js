@@ -1,17 +1,39 @@
 import React, { useState } from "react";
+import Title from "./Title";
 import axios from "axios";
 
 export default function Form() {
   const [zip, setZip] = useState("");
   const [data, setData] = useState(null);
+  const [lat, setLat] = useState(null);
+  const [lon, setLon] = useState(null);
+  const [name, setName] = useState("Weather");
   const apikey = "0853c15130697cb0030dc6c83d7ae9cd";
-  const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apikey}&units=imperial`;
+  const oneCallPath = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apikey}&units=imperial`;
+  const geocodingPath = `http://api.openweathermap.org/geo/1.0/zip?zip=${zip}&appid=${apikey}`;
 
-  async function getStories() {
+  // Get Lat and Long
+  async function getLocation() {
     try {
-      await axios.get(path).then((res) => {
+      await axios.get(geocodingPath).then((res) => {
+        const data = res.data;
+        setLat(data.lat);
+        setLon(data.lon);
+        setName(data.name);
+        console.log(data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  // Get Weather
+  async function getWeather() {
+    try {
+      await axios.get(oneCallPath).then((res) => {
         const data = res.data;
         setData(data);
+
         console.log(data);
       });
     } catch (err) {
@@ -21,11 +43,13 @@ export default function Form() {
 
   return (
     <div>
-      {data ? <h1>{data.main.temp}</h1> : null}
+      <Title name={name} />
+      {data ? <h1>{data.current.temp}</h1> : null}
       <form
         onSubmit={(e) => {
           e.preventDefault(); //prevent page reload
-          getStories();
+          getLocation();
+          getWeather();
         }}
       >
         <input
