@@ -1,5 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import "../App.css";
 
 export default function Title(props) {
-  return <h1>{props.name}</h1>;
+  return (
+    <div>
+      <h1 className="Title">{props.city}</h1>
+    </div>
+  );
 }

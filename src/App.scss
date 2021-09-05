@@ -2,6 +2,11 @@
   margin: 0;
 }
 
+// Variables
+$app-background: white;
+$card-background: #d9ffff;
+
+// Mixins
 @mixin center-flex {
   display: flex;
   justify-content: center;
@@ -10,15 +15,10 @@
 
 .App {
   @include center-flex();
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    0deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(69, 119, 136, 1) 51%,
-    rgba(179, 242, 255, 1) 100%
-  );
+  background: $app-background;
 }
 
 .WeatherCard {
@@ -27,5 +27,10 @@
   height: 600px;
   width: 400px;
   border-radius: 10px;
-  background: white;
+  background-color: $card-background;
+}
+
+// Title Component
+h1.Title {
+  text-transform: uppercase;
 }

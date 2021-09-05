@@ -3,39 +3,28 @@ import Title from "./Title";
 import axios from "axios";
 
 export default function Form() {
+  // Hooks
   const [zip, setZip] = useState("");
-  const [data, setData] = useState(null);
-  const [lat, setLat] = useState(null);
-  const [lon, setLon] = useState(null);
-  const [name, setName] = useState("Weather");
-  const apikey = "0853c15130697cb0030dc6c83d7ae9cd";
-  const oneCallPath = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apikey}&units=imperial`;
-  const geocodingPath = `http://api.openweathermap.org/geo/1.0/zip?zip=${zip}&appid=${apikey}`;
+  const [city, setCity] = useState(null);
+  // const [lat, setLat] = useState(null);
+  // const [lon, setLon] = useState(null);
 
-  // Get Lat and Long
-  async function getLocation() {
-    try {
-      await axios.get(geocodingPath).then((res) => {
-        const data = res.data;
-        setLat(data.lat);
-        setLon(data.lon);
-        setName(data.name);
-        console.log(data);
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  // Variables
+  const apikey = "0853c15130697cb0030dc6c83d7ae9cd";
+  const geocodingPath = `http://api.openweathermap.org/geo/1.0/zip?zip=${zip}&appid=${apikey}`;
+  // const oneCallPath = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apikey}&units=imperial`;
 
   // Get Weather
   async function getWeather() {
     try {
-      await axios.get(oneCallPath).then((res) => {
-        const data = res.data;
-        setData(data);
-
-        console.log(data);
-      });
+      const res1 = await axios.get(geocodingPath);
+      const data = res1.data;
+      setCity(data.name);
+      const res2 = await axios.get(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${data.lat}&lon=${data.lon}&appid=${apikey}&units=imperial`
+      );
+      const data2 = res2.data;
+      console.log(data2);
     } catch (err) {
       console.log(err);
     }
@@ -43,25 +32,24 @@ export default function Form() {
 
   return (
     <div>
-      <Title name={name} />
-      {data ? <h1>{data.current.temp}</h1> : null}
+      {/* Form  */}
       <form
         onSubmit={(e) => {
           e.preventDefault(); //prevent page reload
-          getLocation();
           getWeather();
         }}
       >
         <input
+          placeholder="Enter Zip"
           type="text"
-          placeholder="Enter ZIP"
           value={zip}
           onChange={(e) => {
             setZip(e.target.value);
           }}
         />
-        <button type="submit">Enter</button>
       </form>
+      <button type="submit">Enter</button>
+      {/* <Title city={city} /> */}
     </div>
   );
 }
