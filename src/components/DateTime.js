@@ -36,9 +36,9 @@ export default function DateTime() {
 
   return (
     <div>
-      <h1>
+      <p>
         {days[day]} {months[month]} {date} {year}
-      </h1>
+      </p>
     </div>
   );
 }
