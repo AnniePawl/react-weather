@@ -73,7 +73,19 @@ input:hover {
   background: pink;
 }
 
-button {
-  opacity: 0;
+.morning {
+  background-color: #f7fcff;
+}
+
+.afternoon {
+  background-color: #d9f0ff;
+}
+
+.evening {
+  background-color: #d9f0ff;
+}
+
+.night {
+  background-color: #192b36;
 }
 /*# sourceMappingURL=App.css.map */

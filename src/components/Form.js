@@ -57,7 +57,7 @@ export default function Form() {
       <WeatherCard
         city={city}
         description={description}
-        temp={temp}
+        temp={Math.round(temp)}
       ></WeatherCard>
     </div>
   );

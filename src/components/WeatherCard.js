@@ -7,7 +7,7 @@ export default function WeatherCard(props) {
     <div className="WeatherCard">
       <h1>{props.city}</h1>
       <h3>{props.description}</h3>
-      <h2>{props.temp}</h2>
+      <h2>{props.temp}°</h2>
       <DateTime />
     </div>
   );

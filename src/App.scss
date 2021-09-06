@@ -4,6 +4,10 @@
 
 // Variables
 $app-background: white;
+$moring-background: #f7fcff;
+$afternoon-background: #d9f0ff;
+$evening-background: #6da0bf;
+$night-background: #192b36;
 $card-background: #d9ffff;
 $input-hover: pink;
 $font: "Roboto", sans-serif;
@@ -57,5 +61,19 @@ input:hover {
   background: $input-hover;
 }
 button {
-  opacity: 0;
+  // opacity: 0;
+}
+
+// Conditional Background Color Styles
+.morning {
+  background-color: $moring-background;
+}
+.afternoon {
+  background-color: $afternoon-background;
+}
+.evening {
+  background-color: $afternoon-background;
+}
+.night {
+  background-color: $night-background;
 }
