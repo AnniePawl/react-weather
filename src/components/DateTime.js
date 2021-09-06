@@ -12,6 +12,7 @@ export default function DateTime() {
   let minutes = currentDate.getMinutes();
   // Hooks
   const [AMPM, setAMPM] = useState("AM");
+  const [backgroundClass, setBackgroundClass] = useState("");
 
   // Days of Week
   const days = [
@@ -26,18 +27,18 @@ export default function DateTime() {
 
   // Months
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
     "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   // Format Time Functions
@@ -62,12 +63,13 @@ export default function DateTime() {
 
   return (
     <div>
-      <h2>
+      <h2 className="DateTime__date">
+        {days[day].toUpperCase()} | {months[month].toUpperCase()} {date} |{" "}
         {formattedHour}:{formattedMinutes} {AMPM}
       </h2>
-      <p>
-        {days[day].toUpperCase()} {months[month].toUpperCase()} {date} {year}
-      </p>
+      {/* <h2>
+        {formattedHour}:{formattedMinutes} {AMPM}
+      </h2> */}
     </div>
   );
 }

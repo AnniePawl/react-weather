@@ -26,7 +26,7 @@ export default function Form() {
       );
       const data2 = res2.data;
       // console.log(data2.current.weather[0].main);
-      setDescription(data2.current.weather[0].main);
+      setDescription(data2.current.weather[0].description);
       setTemp(data2.current.temp);
       console.log(data2);
     } catch (err) {
@@ -57,7 +57,7 @@ export default function Form() {
       <WeatherCard
         city={city}
         description={description}
-        temp={Math.round(temp)}
+        temp={temp}
       ></WeatherCard>
     </div>
   );

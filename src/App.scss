@@ -29,13 +29,31 @@ $font: "Roboto", sans-serif;
 }
 
 .WeatherCard {
-  @include center-flex();
-
+  display: flex;
+  align-items: center;
+  // @include center-flex();
+  // border: 1px solid black;
   flex-direction: column;
   height: 600px;
   width: 400px;
   border-radius: 10px;
   background-color: $card-background;
+}
+
+.WeatherCard > .WeatherCard__city {
+  margin-top: 30px;
+}
+h1.WeatherCard__temp {
+  font-size: 80px;
+  margin: 10px;
+}
+
+.WeatherCard > .WeatherCard__dateTime {
+  // border: 1px solid black;
+  margin-top: 10px;
+  display: flex;
+  justify-self: flex-start;
+  align-self: center;
 }
 
 // Title Component
