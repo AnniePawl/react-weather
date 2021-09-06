@@ -5,6 +5,8 @@
 // Variables
 $app-background: white;
 $card-background: #d9ffff;
+$input-hover: pink;
+$font: "Roboto", sans-serif;
 
 // Mixins
 @mixin center-flex {
@@ -19,10 +21,12 @@ $card-background: #d9ffff;
   height: 100vh;
   width: 100vw;
   background: $app-background;
+  font-family: $font;
 }
 
 .WeatherCard {
   @include center-flex();
+
   flex-direction: column;
   height: 600px;
   width: 400px;
@@ -33,4 +37,25 @@ $card-background: #d9ffff;
 // Title Component
 h1.Title {
   text-transform: uppercase;
+  font: $font;
+}
+
+// Form Styles
+form {
+  @include center-flex();
+}
+// Input
+input {
+  text-align: center;
+  height: 30px;
+  width: 120px;
+  border: None;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.16), 0px 1px 3px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+}
+input:hover {
+  background: $input-hover;
+}
+button {
+  opacity: 0;
 }
